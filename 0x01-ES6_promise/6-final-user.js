@@ -5,11 +5,12 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
 	.then((res) => {
 		const result = [];
 		res.forEach((element) => {
-			if (element.status === 'fufilled') {result.push({status: element.status, value: element.value})
-			}
-			else { result.push({status: element.status, value: element.reason});
-			}
-			return result;
+      	if (element.status === 'fulfilled') {
+        	result.push({ status: `${element.status}`, value: `${element.value}` });
+      	} else {
+        	result.push({ status: `${element.status}`, value: `${element.reason}` });
+      	}
+    	});
+    	return result;
 		});
-	});
 }
