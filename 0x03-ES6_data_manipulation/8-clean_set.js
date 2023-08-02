@@ -1,7 +1,7 @@
 import hasValuesFromArray from "./7-has_array_values.js";
 
 export default function cleanSet(set, startString) {
-	if (startString === undefined || startString === "") {
+	if (startString === undefined || startString === "" || typeof(startString) !== "string") {
 		return "";
 	}
 	let return_string = "";
