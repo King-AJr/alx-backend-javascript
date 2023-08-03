@@ -4,7 +4,7 @@ export default function updateUniqueItems(oldMap) {
 			map.set(key, 100);
 		}
 	}
-	if (map instanceof Map) {
+	if (oldMap instanceof Map) {
 		oldMap.forEach(increment);
 		return oldMap;
 	}
