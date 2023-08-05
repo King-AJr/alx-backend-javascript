@@ -19,3 +19,12 @@ const teacher3: Teacher = {
 interface Directors extends Teacher {
     numberOfReports: number
 }
+
+interface printTeacherFunction {
+    (firstName: string, lastName: string) : string;
+}
+
+const printTeacher: printTeacherFunction = (firstName: string, lastName: string) => {
+    const last: string = firstName[0]
+    return `${last}. ${lastName}`
+}
