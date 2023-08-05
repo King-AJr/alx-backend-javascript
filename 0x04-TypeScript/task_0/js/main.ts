@@ -18,7 +18,3 @@ const Student2 : Student = {
     age: 26,
     location: "Port Harcourt"
 }
-
-const studentList: Array<Student> = [Student1, Student2]
-
-console.log(Student1)
