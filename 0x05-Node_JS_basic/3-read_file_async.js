@@ -27,30 +27,34 @@ function checkField(lines) {
 
 // Function to count and display the number of students in different fields from a given file path
 function countStudents(path) {
-  try {
-    fs.readFile(path, 'utf8', (err, data) => { // Read the file asynchronously
-      const lines = data.split('\n'); // Split the file content into an array of lines
-      const nonEmptyLines = lines.filter((line) => line.trim() !== ''); // Filter out empty lines
+  return new Promise((resolve, reject) => {
+    fs.readFile(path, 'utf8', (err, data) => {
+      if (err) {
+        reject(Error('Cannot load the database'));
+      } else {
+        const lines = data.split('\n'); // Split the file content into an array of lines
+        const nonEmptyLines = lines.filter((line) => line.trim() !== ''); // Filter out empty lines
 
-      if (nonEmptyLines.length === 0) {
-        console.log('No student data found in the file.');
-        return;
+        if (nonEmptyLines.length === 0) {
+          console.log('No student data found in the file.');
+          return;
+        }
+
+        // Get the total number of non-empty lines (excluding headers)
+        const numberOfLines = nonEmptyLines.length;
+
+        // Categorize non-empty lines into 'CS' and 'SWE' arrays
+        const students = checkField(nonEmptyLines);
+        const CSStudentList = students[0].join(', '); // Convert the 'CS' student array to a comma-separated string
+        const SWEStudentList = students[1].join(', '); // Convert the 'SWE' student array to a comma-separated string
+        console.log(`number of students: ${numberOfLines - 1}`); // Display the total number of students (excluding headers)
+        console.log(`Number of students in CS: ${students[0].length}. List: ${CSStudentList}`); // Display 'CS' student count and list
+        console.log(`Number of students in SWE: ${students[1].length}. List: ${SWEStudentList}`); // Display 'SWE' student count and list
+
+        resolve(data);
       }
-
-      // Get the total number of non-empty lines (excluding headers)
-      const numberOfLines = nonEmptyLines.length;
-
-      // Categorize non-empty lines into 'CS' and 'SWE' arrays
-      const students = checkField(nonEmptyLines);
-      const CSStudentList = students[0].join(', '); // Convert the 'CS' student array to a comma-separated string
-      const SWEStudentList = students[1].join(', '); // Convert the 'SWE' student array to a comma-separated string
-      console.log(`number of students: ${numberOfLines - 1}`); // Display the total number of students (excluding headers)
-      console.log(`Number of students in CS: ${students[0].length}. List: ${CSStudentList}`); // Display 'CS' student count and list
-      console.log(`Number of students in SWE: ${students[1].length}. List: ${SWEStudentList}`); // Display 'SWE' student count and list
     });
-  } catch (err) {
-    throw Error('Cannot load the database');
-  }
+  });
 }
 
 // Export the 'countStudents' function for use in other modules
