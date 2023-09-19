@@ -28,7 +28,7 @@ function checkField(lines) {
 // Function to count and display the number of students in different fields from a given file path
 function countStudents(path) {
   try {
-    fs.readFileSync(path, 'utf8', (err, data) => { // Read the file asynchronously
+    fs.readFile(path, 'utf8', (err, data) => { // Read the file asynchronously
       const lines = data.split('\n'); // Split the file content into an array of lines
       const nonEmptyLines = lines.filter((line) => line.trim() !== ''); // Filter out empty lines
 
