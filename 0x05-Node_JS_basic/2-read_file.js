@@ -44,7 +44,7 @@ function countStudents(path) {
       const students = checkField(nonEmptyLines);
       const CSStudentList = students[0].join(', '); // Convert the 'CS' student array to a comma-separated string
       const SWEStudentList = students[1].join(', '); // Convert the 'SWE' student array to a comma-separated string
-      console.log(`number of students: ${numberOfLines - 1}`); // Display the total number of students (excluding headers)
+      console.log(`Number of students: ${numberOfLines - 1}`); // Display the total number of students (excluding headers)
       console.log(`Number of students in CS: ${students[0].length}. List: ${CSStudentList}`); // Display 'CS' student count and list
       console.log(`Number of students in SWE: ${students[1].length}. List: ${SWEStudentList}`); // Display 'SWE' student count and list
     });

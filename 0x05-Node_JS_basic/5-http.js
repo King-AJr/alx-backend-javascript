@@ -1,3 +1,6 @@
+// Import the 'http' module
+const http = require('http');
+
 // Import the 'fs' module for file system operations
 const fs = require('fs');
 
@@ -47,15 +50,43 @@ function countStudents(path) {
         const students = checkField(nonEmptyLines);
         const CSStudentList = students[0].join(', '); // Convert the 'CS' student array to a comma-separated string
         const SWEStudentList = students[1].join(', '); // Convert the 'SWE' student array to a comma-separated string
-        console.log(`Number of students: ${numberOfLines - 1}`); // Display the total number of students (excluding headers)
-        console.log(`Number of students in CS: ${students[0].length}. List: ${CSStudentList}`); // Display 'CS' student count and list
-        console.log(`Number of students in SWE: ${students[1].length}. List: ${SWEStudentList}`); // Display 'SWE' student count and list
+        const output = `Number of students: ${numberOfLines - 1}
+Number of students in CS: ${students[0].length}. List: ${CSStudentList}
+Number of students in SWE: ${students[1].length}. List: ${SWEStudentList} `;
 
-        resolve(data);
+        resolve(output);
       }
     });
   });
 }
 
-// Export the 'countStudents' function for use in other modules
-module.exports = countStudents;
+// Define the hostname and port for your server
+const hostname = '127.0.0.1'; // Change this to your desired hostname or IP
+const port = 1245; // Change this to your desired port number
+
+// Create an HTTP server
+const app = http.createServer((req, res) => {
+  // Set the response HTTP headers
+  res.statusCode = 200; // HTTP status code 200 means "OK"
+  res.setHeader('Content-Type', 'text/plain');
+
+  if (req.url === '/') {
+    res.end('Hello Holberton School!\n');
+  } else if (req.url === '/students') {
+    res.write('This is the list of our students\n');
+    countStudents(process.argv[2].toString()).then((output) => {
+      const returnString = output.slice(0, -1);
+      res.end(returnString);
+    }).catch(() => {
+      res.statusCode = 404;
+      res.end('Cannot load the database');
+    });
+  }
+});
+
+// Start the server and listen on the specified hostname and port
+app.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+
+module.exports = app;
