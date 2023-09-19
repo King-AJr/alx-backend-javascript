@@ -33,8 +33,18 @@ function countStudents(path) {
     }
 
     const lines = data.split('\n'); // Split the file content into an array of lines
-    const numberOfLines = lines.length; // Get the total number of lines (including headers)
-    const students = checkField(lines); // Categorize students into 'CS' and 'SWE' arrays
+    const nonEmptyLines = lines.filter((line) => line.trim() !== ''); // Filter out empty lines
+
+    if (nonEmptyLines.length === 0) {
+      console.log('No student data found in the file.');
+      return;
+    }
+
+    // Get the total number of non-empty lines (excluding headers)
+    const numberOfLines = nonEmptyLines.length;
+
+    // Categorize non-empty lines into 'CS' and 'SWE' arrays
+    const students = checkField(nonEmptyLines);
     const CSStudentList = students[0].join(', '); // Convert the 'CS' student array to a comma-separated string
     const SWEStudentList = students[1].join(', '); // Convert the 'SWE' student array to a comma-separated string
     console.log(`number of students: ${numberOfLines - 1}`); // Display the total number of students (excluding headers)
