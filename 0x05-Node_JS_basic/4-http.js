@@ -12,7 +12,7 @@ const app = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'text/plain');
 
   // Write a response to the client
-  res.end('Hello Holberton School!\n');
+  res.end('Hello Holberton School!');
 });
 
 // Start the server and listen on the specified hostname and port
