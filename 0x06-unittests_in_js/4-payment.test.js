@@ -10,6 +10,5 @@ describe('sendPaymentRequestToApi', () => {
         sendPaymentRequestToApi(100, 20);
         expect(UtilsSpy.calculateNumber.calledWith('SUM', 100, 20)).to.be.true;
         expect(UtilsSpy.calculateNumber.callCount).to.be.equal(1);
-        UtilsSpy.calculateNumber.restore()
     })
 })
