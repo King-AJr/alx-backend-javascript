@@ -1,7 +1,3 @@
-/* eslint-disable jest/valid-expect */
-/* eslint-disable jest/prefer-expect-assertions */
-/* eslint-disable semi */
-/* eslint-disable jest/expect-expect */
 const { expect } = require('chai');
 const calculateNumber = require('./1-calcul')
 
