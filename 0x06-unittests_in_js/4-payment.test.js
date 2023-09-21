@@ -6,7 +6,7 @@ const sendPaymentRequestToApi = require('./4-payment');
 describe('sendPaymentRequestToApi', () => {
     it('should use Utils.calculateNumber with the same arguments', () => {
         const calculateNumberStub = sinon.stub(Utils, 'calculateNumber');
-        calculateNumberStub.returns(10)
+        calculateNumberStub.returns(10);
 
         const consoleLogSpy = sinon.spy(console, 'log');
 
@@ -22,8 +22,8 @@ describe('sendPaymentRequestToApi', () => {
         // expect(calculateNumberStub.callCount).to.be.equal(1);
         
 
-        calculateNumberStub.restore()
-        consoleLogSpy.restore()
+        calculateNumberStub.restore();
+        consoleLogSpy.restore();
         
     })
 })
