@@ -7,8 +7,8 @@ function inputFx() {
   });
 
   rl.question('Welcome to Holberton School, what is your name?\n', (userInput) => {
-    console.log(`Your name is: ${userInput}`);
-    console.log('This important software is now closing');
+    rl.output.write(`Your name is: ${userInput}\r`);
+    rl.output.write('This important software is now closing\n');
     rl.close();
   });
 }
