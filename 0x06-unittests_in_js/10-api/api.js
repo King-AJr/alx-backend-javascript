@@ -21,8 +21,10 @@ app.get('/available_payments', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
+    let username = '';
+  
     if (req.body) {
-        res.status(200).send(`Welcome :${req.body.userName}`)
+      username = req.body.userName;
     }
 })
 
