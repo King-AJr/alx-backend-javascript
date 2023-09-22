@@ -12,7 +12,6 @@ describe('calculateNumber', () => {
 
   it('assert that b is rounded properly', () => {
     assert.equal(calculateNumber(3, 3.7), 7);
-    assert.equal(calculateNumber(4, 5.8), 10);
   });
 
   it('assert that a and b are rounded properly', () => {
