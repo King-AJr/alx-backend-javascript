@@ -1,8 +1,7 @@
-import readDatabase from "../utils";
-
-class StudentsController {
-  static getAllStudents(req, res) {
-		readDatabase(process?.argv[2]);
-		return 
-	}
+class AppController {
+  static getHomepage(req, res) {
+    res.status(200).send('Hello Holberton School!');
+  }
 }
+
+module.exports = AppController;
