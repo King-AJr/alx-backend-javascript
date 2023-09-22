@@ -5,17 +5,45 @@ const assert = require('assert');
 const calculateNumber = require('./0-calcul')
 
 describe('calculateNumber', () => {
-  it('assert that a is rounded properly', () => {
-    assert.equal(calculateNumber(2.7, 3), 6);
-    assert.equal(calculateNumber(4.8, 5), 10);
+  describe('Rounding a', () => {
+    it('should round a properly (Case 1)', () => {
+      assert.equal(calculateNumber(2.7, 3), 6);
+    });
+
+    it('should round a properly (Case 2)', () => {
+      assert.equal(calculateNumber(4.8, 5), 10);
+    });
+
+    it('should round a properly (Case 3)', () => {
+      assert.equal(calculateNumber(1.1, 1.1), 2);
+    });
   });
 
-  it('assert that b is rounded properly', () => {
-    assert.equal(calculateNumber(3, 3.7), 7);
+  describe('Rounding b', () => {
+    it('should round b properly (Case 1)', () => {
+      assert.equal(calculateNumber(3, 3.7), 7);
+    });
+
+    it('should round b properly (Case 2)', () => {
+      assert.equal(calculateNumber(5.5, 6.5), 13);
+    });
+
+    it('should round b properly (Case 3)', () => {
+      assert.equal(calculateNumber(0.3, 0.9), 1);
+    });
   });
 
-  it('assert that a and b are rounded properly', () => {
-    assert.equal(calculateNumber(3.2, 3.7), 7);
-    assert.equal(calculateNumber(4.1, 5.8), 10);
+  describe('Rounding a and b', () => {
+    it('should round both a and b properly (Case 1)', () => {
+      assert.equal(calculateNumber(3.2, 3.7), 7);
+    });
+
+    it('should round both a and b properly (Case 2)', () => {
+      assert.equal(calculateNumber(4.1, 5.8), 10);
+    });
+
+    it('should round both a and b properly (Case 3)', () => {
+      assert.equal(calculateNumber(2.49, 1.5), 4);
+    });
   });
-})
+});
