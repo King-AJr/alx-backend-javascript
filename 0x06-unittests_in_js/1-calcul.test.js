@@ -1,7 +1,7 @@
 const assert = require('assert');
 const calculateNumber = require('./1-calcul')
 
-describe('calculateNumber SUM', () => {
+describe('calculateNumber', () => {
   it('assert that a is rounded and sums correctly', () => {
     assert.equal(calculateNumber('SUM', 2.7, 3), 6);
     assert.equal(calculateNumber('SUM', 4.8, 5), 10);
@@ -16,9 +16,7 @@ describe('calculateNumber SUM', () => {
     assert.equal(calculateNumber('SUM', 3.2, 3.7), 7);
     assert.equal(calculateNumber('SUM', 4.1, 5.8), 10);
   });
-})
 
-describe('calculateNumber SUBTRACT', () => {
   it('assert that a is rounded and subtracts correctly', () => {
     assert.equal(calculateNumber('SUBTRACT', 2.7, 2), 1);
     assert.equal(calculateNumber('SUBTRACT', 4.8, 3), 2);
@@ -33,9 +31,7 @@ describe('calculateNumber SUBTRACT', () => {
     assert.equal(calculateNumber('SUBTRACT', 7.2, 3.7), 3);
     assert.equal(calculateNumber('SUBTRACT', 10.1, 5.8), 4);
   });
-})
 
-describe('calculateNumber DIVIDE', () => {
   it('assert that a is rounded and divides correctly', () => {
     assert.equal(calculateNumber('DIVIDE', 10.2, 2), 5);
     assert.equal(calculateNumber('DIVIDE', 8.8, 3), 3);
