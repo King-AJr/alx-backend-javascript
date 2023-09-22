@@ -46,7 +46,7 @@ function countStudents(path) {
     console.log(`Number of students in CS: ${students[0].length}. List: ${CSStudentList}`); // Display 'CS' student count and list
     console.log(`Number of students in SWE: ${students[1].length}. List: ${SWEStudentList}`); // Display 'SWE' student count and list
   } catch (err) {
-    console.error('Cannot load the database:', err); // Handle errors if the file cannot be read
+    throw Error('Cannot load the database:'); // Handle errors if the file cannot be read
   }
 }
 
