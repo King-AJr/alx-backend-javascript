@@ -11,6 +11,10 @@ function inputFx() {
     rl.output.write('This important software is now closing\n');
     rl.close();
   });
+
+  rl.on('close', () => {
+    process.exit(0); // Exit the program gracefully
+  });
 }
 
 inputFx();
