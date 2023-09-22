@@ -1,14 +1,12 @@
 const Utils = {
-  calculateNumber(type, a, b) {
-    let result = 0;
+  calculateNumber (type, a, b) {
     if (type === 'SUM') {
-      result = Math.round(a) + Math.round(b);
+      return Math.round(a) + Math.round(b);
     } else if (type === 'SUBTRACT') {
-      result = Math.round(a) - Math.round(b);
+      return Math.round(a) - Math.round(b);
     } else if (type === 'DIVIDE') {
-      result = Math.round(a) / Math.round(b);
+      return Math.round(b) === 0 ? 'Error' : Math.round(a) / Math.round(b);
     }
-    return result;
   },
 };
 
