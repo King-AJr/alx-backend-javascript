@@ -77,7 +77,7 @@ app.get('/students', (req, res) => {
       res.send(`This is the list of our students\n${returnString}`);
     })
     .catch(() => {
-      res.send('Cannot load the database');
+      res.send('This is the list of our students\nCannot load the database');
     });
 });
 
