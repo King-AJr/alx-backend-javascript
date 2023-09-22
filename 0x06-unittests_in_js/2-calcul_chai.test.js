@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const calculateNumber = require('./1-calcul')
 
 describe('calculateNumber', () => {
-  describe('test type SUM', () => {
+  describe('type=SUM', () => {
     it('assert that a is rounded and sums correctly', () => {
       expect(calculateNumber('SUM', 2.7, 3), 6);
       expect(calculateNumber('SUM', 4.8, 5), 10);
@@ -19,7 +19,7 @@ describe('calculateNumber', () => {
     });
   })
 
-  describe('test type SUBTRACT', () => {
+  describe('type=SUBTRACT', () => {
     it('assert that a is rounded and subtracts correctly', () => {
       expect(calculateNumber('SUBTRACT', 2.7, 2)).to.equal(1);
       expect(calculateNumber('SUBTRACT', 4.8, 3)).to.equal(2);
@@ -36,7 +36,7 @@ describe('calculateNumber', () => {
     });
   })
 
-  describe('test type DIVIDE', () => {
+  describe('type=DIVIDE', () => {
     it('assert that a is rounded and divides correctly', () => {
       expect(calculateNumber('DIVIDE', 10.2, 2)).to.equal(5);
       expect(calculateNumber('DIVIDE', 8.8, 3)).to.equal(3);
@@ -53,7 +53,7 @@ describe('calculateNumber', () => {
     });
   })
 
-  describe('test type DIVIDE and correct output when result is 0', () => {
+  describe('type=DIVIDE and return Error', () => {
     it('positive number and 0', () => {
       expect(calculateNumber('DIVIDE', 5.0, 0)).to.be.equal('Error');
     });
