@@ -52,4 +52,28 @@ describe('calculateNumber', () => {
       assert.equal(calculateNumber('DIVIDE', 10.1, 2.1), 5);
     });
   })
+
+  describe('test type DIVIDE and correct output when result is 0', () => {
+    it('positive number and 0', () => {
+      assert.equal(calculateNumber('DIVIDE', 5.0, 0), 'Error');
+    });
+    it('positive number and number rounded down to 0', () => {
+      assert.equal(calculateNumber('DIVIDE', 5.0, 0.2), 'Error');
+    });
+    it('positive number and number rounded up to 0', () => {
+      assert.equal(calculateNumber('DIVIDE', 5.0, -0.2), 'Error');
+    });
+    it('negative number and 0', () => {
+      assert.equal(calculateNumber('DIVIDE', -5.0, 0), 'Error');
+    });
+    it('negative number and number rounded down to zero', () => {
+      assert.equal(calculateNumber('DIVIDE', -5.0, 0.2), 'Error');
+    });
+    it('negative number and number rounded up to zero', () => {
+      assert.equal(calculateNumber('DIVIDE', -5.0, -0.2), 'Error');
+    });
+    it('0 and 0', () => {
+      assert.equal(calculateNumber('DIVIDE', 0.0, 0.0), 'Error');
+    });
+  })
 })
