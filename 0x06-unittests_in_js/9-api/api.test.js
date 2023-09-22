@@ -1,11 +1,10 @@
-const chai = require('chai');
 const { expect } = require('chai')
 const request = require('request');
 
-const app = require('./api');
-const API_URI = 'http://localhost:7865'
 
 describe('returns correct response', () => {
+    const API_URI = 'http://localhost:7865'
+
     it('should return Welcome to the payment system', (done) => {
         request.get(`${API_URI}/`, (_error, res, body) => {
             expect(res.statusCode).to.equal(200);
@@ -13,9 +12,7 @@ describe('returns correct response', () => {
             done();
         })
     })
-})
 
-describe('accept param and return correct response', () => {
     it('should return Payment methods for cart :id when id is num', (done) => {
         const id = 3;
         request.get(`${API_URI}/cart/${id}`, (_error, res, body) => {
