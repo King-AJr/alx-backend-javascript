@@ -2,7 +2,6 @@ const chai = require('chai');
 const { expect } = require('chai')
 const request = require('request');
 
-const app = require('./api');
 
 describe('test /', () => {
     it('should return Welcome to the payment system', (done) => {
