@@ -4,33 +4,30 @@ const request = require('request');
 
 
 describe('test /', () => {
+    const API_URI = 'http://localhost:7865'
     it('should return Welcome to the payment system', (done) => {
-        request.get('http://localhost:7865/', (error, res, body) => {
+        request.get(`${API_URI}/`, (error, res, body) => {
             expect(res.statusCode).to.equal(200);
             expect(body).to.be.equal('Welcome to the payment system')
             done();
         })
     })
-})
 
-describe('test /cart/:id', () => {
     it('should return Payment methods for cart :id when id is num', (done) => {
         const id = 3;
-        request.get(`http://localhost:7865/cart/${id}`, (error, res, body) => {
+        request.get(`${API_URI}/cart/${id}`, (error, res, body) => {
             expect(res.statusCode).to.equal(200);
             expect(body).to.be.equal('Payment methods for cart 3');
             done();
         })
     })
     it('should return status code 404 if id is not a number', (done) => {
-        request.get('http://localhost:7865/cart/id', (error, res, body) => {
+        request.get(`${API_URI}/cart/id`, (error, res, body) => {
             expect(res.statusCode).to.equal(404);
             done();
         })
     })
-})
 
-describe('test /login and /available_payments', () => {
     it('should return object with payment methods and status code 200', (done) => {
         const data = {
             payment_methods: {
@@ -38,7 +35,7 @@ describe('test /login and /available_payments', () => {
               paypal: false
             }
           }
-        request.get('http://localhost:7865/available_payments', (error, res, body) => {
+        request.get(`${API_URI}/available_payments`, (error, res, body) => {
             expect(res.statusCode).to.equal(200);
             expect(JSON.parse(body)).to.deep.equal(data)
             done();
@@ -46,7 +43,7 @@ describe('test /login and /available_payments', () => {
     });
 
     it('should return Welcome:<UserName> gotten from req', () => {
-        request.post('http://localhost:7865/login', {json: {userName:'John Doe'}}, (error, res, body) => {
+        request.post(`${API_URI}/login`, {json: {userName:'John Doe'}}, (error, res, body) => {
             expect(res.statusCode).to.equal(200);
             expect(JSON.parse(body)).to.be.equal('Welcome John Doe')
             done();
